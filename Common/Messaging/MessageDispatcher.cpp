@@ -80,18 +80,18 @@ void MessageDispatcher::DispatchMsg(double       delay,
   //else calculate the time when the telegram should be dispatched
   else
   {
-    double CurrentTime = TickCounter->GetCurrentFrame(); 
+    //double CurrentTime = TickCounter->GetCurrentFrame(); 
 
-    telegram.DispatchTime = CurrentTime + delay;
+    //telegram.DispatchTime = CurrentTime + delay;
 
-    //and put it in the queue
-    PriorityQ.insert(telegram);   
+    ////and put it in the queue
+    //PriorityQ.insert(telegram);   
 
-    #ifdef SHOW_MESSAGING_INFO
-    debug_con << "\nDelayed telegram from " << sender << " recorded at time " 
-            << TickCounter->GetCurrentFrame() << " for " << receiver
-            << ". Msg is " << msg << "";
-    #endif
+    //#ifdef SHOW_MESSAGING_INFO
+    //debug_con << "\nDelayed telegram from " << sender << " recorded at time " 
+    //        << TickCounter->GetCurrentFrame() << " for " << receiver
+    //        << ". Msg is " << msg << "";
+    //#endif
   }
 }
 
@@ -100,36 +100,33 @@ void MessageDispatcher::DispatchMsg(double       delay,
 //  This function dispatches any telegrams with a timestamp that has
 //  expired. Any dispatched telegrams are removed from the queue
 //------------------------------------------------------------------------
-void MessageDispatcher::DispatchDelayedMessages()
-{ 
-  //first get current time
-  double CurrentTime = TickCounter->GetCurrentFrame(); 
-
-  //now peek at the queue to see if any telegrams need dispatching.
-  //remove all telegrams from the front of the queue that have gone
-  //past their sell by date
-  while( !PriorityQ.empty() &&
-	     (PriorityQ.begin()->DispatchTime < CurrentTime) && 
-         (PriorityQ.begin()->DispatchTime > 0) )
-  {
-    //read the telegram from the front of the queue
-    const Telegram& telegram = *PriorityQ.begin();
-
-    //find the recipient
-    BaseGameEntity* pReceiver = EntityMgr->GetEntityFromID(telegram.Receiver);
-
-    #ifdef SHOW_MESSAGING_INFO
-    debug_con << "\nQueued telegram ready for dispatch: Sent to " 
-         << pReceiver->ID() << ". Msg is "<< telegram.Msg << "";
-    #endif
-
-    //send the telegram to the recipient
-    Discharge(pReceiver, telegram);
-
-	//remove it from the queue
-    PriorityQ.erase(PriorityQ.begin());
-  }
-}
-
-
-
+//void MessageDispatcher::DispatchDelayedMessages()
+//{ 
+//  //first get current time
+//  double CurrentTime = TickCounter->GetCurrentFrame(); 
+//
+//  //now peek at the queue to see if any telegrams need dispatching.
+//  //remove all telegrams from the front of the queue that have gone
+//  //past their sell by date
+//  while( !PriorityQ.empty() &&
+//	     (PriorityQ.begin()->DispatchTime < CurrentTime) && 
+//         (PriorityQ.begin()->DispatchTime > 0) )
+//  {
+//    //read the telegram from the front of the queue
+//    const Telegram& telegram = *PriorityQ.begin();
+//
+//    //find the recipient
+//    BaseGameEntity* pReceiver = EntityMgr->GetEntityFromID(telegram.Receiver);
+//
+//    #ifdef SHOW_MESSAGING_INFO
+//    debug_con << "\nQueued telegram ready for dispatch: Sent to " 
+//         << pReceiver->ID() << ". Msg is "<< telegram.Msg << "";
+//    #endif
+//
+//    //send the telegram to the recipient
+//    Discharge(pReceiver, telegram);
+//
+//	//remove it from the queue
+//    PriorityQ.erase(PriorityQ.begin());
+//  }
+//}

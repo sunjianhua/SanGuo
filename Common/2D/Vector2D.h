@@ -10,10 +10,12 @@
 //
 //------------------------------------------------------------------------
 #include <math.h>
-#include <windows.h>
+//#include <windows.h>
 #include <iosfwd>
 #include <limits>
 #include "misc/utils.h"
+
+#include "cocos2d.h"
 
 
 struct Vector2D

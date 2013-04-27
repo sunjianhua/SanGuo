@@ -88,7 +88,8 @@ Raven_Bot::Raven_Bot(Raven_Game* world,Vector2D pos):
 //-----------------------------------------------------------------------------
 Raven_Bot::~Raven_Bot()
 {
-  debug_con << "deleting raven bot (id = " << ID() << ")" << "";
+  //debug_con << "deleting raven bot (id = " << ID() << ")" << "";
+  cocos2d::CCLog("deleting raven bot (id = %i)", ID());
   
   delete m_pBrain;
   delete m_pPathPlanner;
@@ -354,7 +355,8 @@ void Raven_Bot::TakePossession()
   {
     m_bPossessed = true;
 
-    debug_con << "Player Possesses bot " << this->ID() << "";
+    //debug_con << "Player Possesses bot " << this->ID() << "";
+	cocos2d::CCLog("Player Possesses bot %i", this->ID());
   }
 }
 //------------------------------- Exorcise ------------------------------------
@@ -368,7 +370,8 @@ void Raven_Bot::Exorcise()
   //when the player is exorcised then the bot should resume normal service
   m_pBrain->AddGoal_Explore();
   
-  debug_con << "Player is exorcised from bot " << this->ID() << "";
+  //debug_con << "Player is exorcised from bot " << this->ID() << "";
+  cocos2d::CCLog("Player Possesses bot %i", this->ID());
 }
 
 

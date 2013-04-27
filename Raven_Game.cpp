@@ -203,7 +203,9 @@ bool Raven_Game::AttemptToAddBot(Raven_Bot* pBot)
   //make sure there are some spawn points available
   if (m_pMap->GetSpawnPoints().size() <= 0)
   {
-    ErrorBox("Map has no spawn points!"); return false;
+    //ErrorBox("Map has no spawn points!"); return false;
+	cocos2d::CCLog("Error: Map has no spawn points!");
+	return false;
   }
 
   //we'll make the same number of attempts to spawn a bot this update as
@@ -456,19 +458,19 @@ void Raven_Game::ClickRightMouseButton(POINTS p)
   //position
   if (m_pSelectedBot->isPossessed())
   {
-    //if the shift key is pressed down at the same time as clicking then the
-    //movement command will be queued
-    if (IS_KEY_PRESSED('Q'))
-    {
-      m_pSelectedBot->GetBrain()->QueueGoal_MoveToPosition(POINTStoVector(p));
-    }
-    else
-    {
-      //clear any current goals
-      m_pSelectedBot->GetBrain()->RemoveAllSubgoals();
+    ////if the shift key is pressed down at the same time as clicking then the
+    ////movement command will be queued
+    //if (IS_KEY_PRESSED('Q'))
+    //{
+    //  m_pSelectedBot->GetBrain()->QueueGoal_MoveToPosition(POINTStoVector(p));
+    //}
+    //else
+    //{
+    //  //clear any current goals
+    //  m_pSelectedBot->GetBrain()->RemoveAllSubgoals();
 
-      m_pSelectedBot->GetBrain()->AddGoal_MoveToPosition(POINTStoVector(p));
-    }
+    //  m_pSelectedBot->GetBrain()->AddGoal_MoveToPosition(POINTStoVector(p));
+    //}
   }
 }
 
@@ -489,10 +491,10 @@ void Raven_Game::ClickLeftMouseButton(POINTS p)
 //-----------------------------------------------------------------------------
 void Raven_Game::GetPlayerInput()const
 {
-  if (m_pSelectedBot && m_pSelectedBot->isPossessed())
-  {
-      m_pSelectedBot->RotateFacingTowardPosition(GetClientCursorPosition());
-   }
+  //if (m_pSelectedBot && m_pSelectedBot->isPossessed())
+  //{
+  //    m_pSelectedBot->RotateFacingTowardPosition(GetClientCursorPosition());
+  // }
 }
 
 
@@ -787,10 +789,10 @@ void Raven_Game::Render()
       m_pSelectedBot->GetWeaponSys()->RenderDesirabilities();
     }
 
-   if (IS_KEY_PRESSED('Q') && m_pSelectedBot->isPossessed())
-    {
-      gdi->TextColor(255,0,0);
-      gdi->TextAtPos(GetClientCursorPosition(), "Queuing");
-    }
+   //if (IS_KEY_PRESSED('Q') && m_pSelectedBot->isPossessed())
+   // {
+   //   gdi->TextColor(255,0,0);
+   //   gdi->TextAtPos(GetClientCursorPosition(), "Queuing");
+   // }
   }
 }

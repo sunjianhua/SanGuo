@@ -11,7 +11,7 @@
 //
 //------------------------------------------------------------------------
 #include <vector>
-#include <windows.h>
+//#include <windows.h>
 #include <string>
 #include <list>
 #include "2d/Vector2D.h"

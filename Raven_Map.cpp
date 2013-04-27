@@ -173,7 +173,8 @@ bool Raven_Map::LoadMap(const std::string& filename)
   std::ifstream in(filename.c_str());
   if (!in)
   {
-    ErrorBox("Bad Map Filename");
+    //ErrorBox("Bad Map Filename");
+	cocos2d::CCLog("Error: Bad Map Filename");
     return false;
   }
 
@@ -190,7 +191,8 @@ bool Raven_Map::LoadMap(const std::string& filename)
   m_pNavGraph->Load(in);
 
 #ifdef LOG_CREATIONAL_STUFF
-    debug_con << "NavGraph for " << filename << " loaded okay" << "";
+    //debug_con << "NavGraph for " << filename << " loaded okay" << "";
+	cocos2d::CCLog("NavGraph for %s loaded okay", filename);
 #endif
 
   //determine the average distance between graph nodes so that we can
@@ -198,11 +200,13 @@ bool Raven_Map::LoadMap(const std::string& filename)
   m_dCellSpaceNeighborhoodRange = CalculateAverageGraphEdgeLength(*m_pNavGraph) + 1;
 
 #ifdef LOG_CREATIONAL_STUFF
-    debug_con << "Average edge length is " << CalculateAverageGraphEdgeLength(*m_pNavGraph) << "";
+    //debug_con << "Average edge length is " << CalculateAverageGraphEdgeLength(*m_pNavGraph) << "";
+	cocos2d::CCLog("Average edge length is %d", CalculateAverageGraphEdgeLength(*m_pNavGraph));
 #endif
 
 #ifdef LOG_CREATIONAL_STUFF
-    debug_con << "Neighborhood range set to " << m_dCellSpaceNeighborhoodRange << "";
+    //debug_con << "Neighborhood range set to " << m_dCellSpaceNeighborhoodRange << "";
+	cocos2d::CCLog("Neighborhood range set to %d", m_dCellSpaceNeighborhoodRange);
 #endif
 
 
@@ -210,7 +214,8 @@ bool Raven_Map::LoadMap(const std::string& filename)
   in >> m_iSizeX >> m_iSizeY;
 
 #ifdef LOG_CREATIONAL_STUFF
-    debug_con << "Partitioning navgraph nodes..." << "";
+    //debug_con << "Partitioning navgraph nodes..." << "";
+	cocos2d::CCLog("Partitioning navgraph nodes...");
 #endif
 
   //partition the graph nodes
@@ -223,10 +228,11 @@ bool Raven_Map::LoadMap(const std::string& filename)
   char*	g_szWindowClassName = "MyWindowClass";
   HWND hwnd = FindWindowA(g_szWindowClassName, g_szApplicationName);
   const int ExtraHeightRqdToDisplayInfo = 50;
-  ResizeWindow(hwnd, m_iSizeX, m_iSizeY+ExtraHeightRqdToDisplayInfo);
+  //ResizeWindow(hwnd, m_iSizeX, m_iSizeY+ExtraHeightRqdToDisplayInfo);
 
 #ifdef LOG_CREATIONAL_STUFF
-    debug_con << "Loading map..." << "";
+    //debug_con << "Loading map..." << "";
+	cocos2d::CCLog("Loading map...");
 #endif
 
  
@@ -239,7 +245,8 @@ bool Raven_Map::LoadMap(const std::string& filename)
     in >> EntityType;
 
 #ifdef LOG_CREATIONAL_STUFF
-    debug_con << "Creating a " << GetNameOfType(EntityType) << "";
+    //debug_con << "Creating a " << GetNameOfType(EntityType) << "";
+	cocos2d::CCLog("Creating a %s", GetNameOfType(EntityType).c_str());
 #endif
 
     //create the object
@@ -287,7 +294,8 @@ bool Raven_Map::LoadMap(const std::string& filename)
   }
 
 #ifdef LOG_CREATIONAL_STUFF
-    debug_con << filename << " loaded okay" << "";
+    //debug_con << filename << " loaded okay" << "";
+	cocos2d::CCLog("%s loaded okay", filename);
 #endif
 
    //calculate the cost lookup table

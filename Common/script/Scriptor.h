@@ -19,7 +19,7 @@
 //#pragma comment(lib, "lua5.1.lib")
 ////#pragma comment(lib, "lualib.lib")
 //
-//#include "LuaHelperFunctions.h"
+#include "LuaHelperFunctions.h"
 
 #include <string>
 
@@ -27,11 +27,11 @@ class Scriptor
 {
 private:
 
-  //lua_State* m_pLuaState;
+  lua_State* m_pLuaState;
 
 public:
 
-  Scriptor()/*:m_pLuaState(luaL_newstate())*/
+  Scriptor():m_pLuaState(0)
   {
     //open the libraries
     //luaL_openlibs(m_pLuaState);
@@ -39,42 +39,40 @@ public:
 
   ~Scriptor(){/*lua_close(m_pLuaState);*/}
 
-  void RunScriptFile(char* ScriptName)
+  //void RunScriptFile(char* ScriptName)
+  void RunScriptFile(char* ScriptName, lua_State* pState)
   {
-     //RunLuaScript(m_pLuaState, ScriptName);
+	  //RunLuaScript(m_pLuaState, ScriptName);
+	  if(0 == m_pLuaState)
+		  m_pLuaState = pState;
   }
 
-  //lua_State* GetState(){return m_pLuaState;}
+  lua_State* GetState(){return m_pLuaState;}
 
 
   int GetInt(char* VariableName)
   {
-    //return PopLuaNumber<int>(m_pLuaState, VariableName);
-	  return 0;
+    return PopLuaNumber<int>(m_pLuaState, VariableName);
   }
     
   double GetFloat(char* VariableName)
   {
-    //return PopLuaNumber<float>(m_pLuaState, VariableName);
-	  return 0.0;
+    return PopLuaNumber<float>(m_pLuaState, VariableName);
   }
 
   double GetDouble(char* VariableName)
   {
-    //return PopLuaNumber<double>(m_pLuaState, VariableName);
-	  return 0.0;
+    return PopLuaNumber<double>(m_pLuaState, VariableName);
   }
 
   std::string GetString(char* VariableName)
   {
-    //return PopLuaString(m_pLuaState, VariableName);
-	  return VariableName;
+    return PopLuaString(m_pLuaState, VariableName);
   }
 
   bool GetBool(char* VariableName)
   {
-    //return PopLuaBool(m_pLuaState, VariableName);
-	  return true;
+    return PopLuaBool(m_pLuaState, VariableName);
   }
 };
 

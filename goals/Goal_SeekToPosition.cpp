@@ -83,7 +83,8 @@ bool Goal_SeekToPosition::isStuck()const
 
   if (TimeTaken > m_dTimeToReachPos)
   {
-    debug_con << "BOT " << m_pOwner->ID() << " IS STUCK!!" << "";
+    //debug_con << "BOT " << m_pOwner->ID() << " IS STUCK!!" << "";
+	cocos2d::CCLog("BOT %i IS STUCK!!", m_pOwner->ID());
 
     return true;
   }

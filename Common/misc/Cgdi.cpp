@@ -1,5 +1,6 @@
 #include "misc/Cgdi.h"
 
+#include "cocos2d.h"
 
 //--------------------------- Instance ----------------------------------------
 //
@@ -12,81 +13,43 @@ Cgdi* Cgdi::Instance()
 }
 
 Cgdi::Cgdi()
-{
-  m_BlackPen = CreatePen(PS_SOLID, 1, colors[black]);
-  m_WhitePen = CreatePen(PS_SOLID, 1, colors[white]);
-  m_RedPen = CreatePen(PS_SOLID, 1, colors[red]);
-  m_GreenPen = CreatePen(PS_SOLID, 1, colors[green]);
-  m_BluePen = CreatePen(PS_SOLID, 1, colors[blue]);
-  m_GreyPen = CreatePen(PS_SOLID, 1, colors[grey]);
-  m_PinkPen = CreatePen(PS_SOLID, 1, colors[pink]);
-  m_YellowPen = CreatePen(PS_SOLID, 1, colors[yellow]);
-  m_OrangePen = CreatePen(PS_SOLID, 1, colors[orange]);
-  m_PurplePen = CreatePen(PS_SOLID, 1, colors[purple]);
-  m_BrownPen = CreatePen(PS_SOLID, 1, colors[brown]);
-  
-  m_DarkGreenPen = CreatePen(PS_SOLID, 1, colors[dark_green]);
-
-  m_LightBluePen = CreatePen(PS_SOLID, 1, colors[light_blue]);
-  m_LightGreyPen = CreatePen(PS_SOLID, 1, colors[light_grey]);
-  m_LightPinkPen = CreatePen(PS_SOLID, 1, colors[light_pink]);
-
-  m_ThickBlackPen = CreatePen(PS_SOLID, 2, colors[black]);
-  m_ThickWhitePen = CreatePen(PS_SOLID, 2, colors[white]);
-  m_ThickRedPen = CreatePen(PS_SOLID, 2, colors[red]);
-  m_ThickGreenPen = CreatePen(PS_SOLID, 2, colors[green]);
-  m_ThickBluePen = CreatePen(PS_SOLID, 2, colors[blue]);
-
-  m_GreenBrush = CreateSolidBrush(colors[green]);
-  m_RedBrush   = CreateSolidBrush(colors[red]);
-  m_BlueBrush  = CreateSolidBrush(colors[blue]);
-  m_GreyBrush  = CreateSolidBrush(colors[grey]);
-  m_BrownBrush = CreateSolidBrush(colors[brown]);
-  m_YellowBrush = CreateSolidBrush(colors[yellow]);
-  m_LightBlueBrush = CreateSolidBrush(RGB(0,255,255));
-  m_DarkGreenBrush = CreateSolidBrush(colors[dark_green]);
-  m_OrangeBrush = CreateSolidBrush(colors[orange]);
-
-  m_hdc = NULL;
-}
+{}
 
 Cgdi::~Cgdi()
-{
-  DeleteObject(m_BlackPen);
-  DeleteObject(m_WhitePen);
-  DeleteObject(m_RedPen);
-  DeleteObject(m_GreenPen);
-  DeleteObject(m_BluePen);
-  DeleteObject(m_GreyPen);
-  DeleteObject(m_PinkPen);
-  DeleteObject(m_OrangePen);
-  DeleteObject(m_YellowPen);
-  DeleteObject(m_PurplePen);
-  DeleteObject(m_BrownPen);
-  DeleteObject(m_OldPen);
-  
-  DeleteObject(m_DarkGreenPen);
+{}
 
-  DeleteObject(m_LightBluePen);
-  DeleteObject(m_LightGreyPen);
-  DeleteObject(m_LightPinkPen);
-  
-  DeleteObject(m_ThickBlackPen);
-  DeleteObject(m_ThickWhitePen);
-  DeleteObject(m_ThickRedPen);
-  DeleteObject(m_ThickGreenPen);
-  DeleteObject(m_ThickBluePen);
+void Cgdi::BlackPen(){cocos2d::ccDrawColor4B(colors[black][0], colors[black][1], colors[black][2], colors[black][3]);}
+void Cgdi::WhitePen(){cocos2d::ccDrawColor4B(colors[white][0], colors[white][1], colors[white][2], colors[white][3]);}
+void Cgdi::RedPen()  {cocos2d::ccDrawColor4B(colors[red][0], colors[red][1], colors[red][2], colors[red][3]);}
+void Cgdi::GreenPen(){cocos2d::ccDrawColor4B(colors[green][0], colors[green][1], colors[green][2], colors[green][3]);}
+void Cgdi::BluePen() {cocos2d::ccDrawColor4B(colors[blue][0], colors[blue][1], colors[blue][2], colors[blue][3]);}
+void Cgdi::GreyPen() {cocos2d::ccDrawColor4B(colors[grey][0], colors[grey][1], colors[grey][2], colors[grey][3]);}
+void Cgdi::PinkPen() {cocos2d::ccDrawColor4B(colors[pink][0], colors[pink][1], colors[pink][2], colors[pink][3]);}
+void Cgdi::YellowPen() {cocos2d::ccDrawColor4B(colors[yellow][0], colors[yellow][1], colors[yellow][2], colors[yellow][3]);}
+void Cgdi::OrangePen() {cocos2d::ccDrawColor4B(colors[orange][0], colors[orange][1], colors[orange][2], colors[orange][3]);}
+void Cgdi::PurplePen() {cocos2d::ccDrawColor4B(colors[purple][0], colors[purple][1], colors[purple][2], colors[purple][3]);}
+void Cgdi::BrownPen() {cocos2d::ccDrawColor4B(colors[brown][0], colors[brown][1], colors[brown][2], colors[brown][3]);}
 
-  DeleteObject(m_GreenBrush);
-  DeleteObject(m_RedBrush);
-  DeleteObject(m_BlueBrush);
-  DeleteObject(m_OldBrush);
-  DeleteObject(m_GreyBrush);
-  DeleteObject(m_BrownBrush);
-  DeleteObject(m_LightBlueBrush);
-  DeleteObject(m_YellowBrush);
-  DeleteObject(m_DarkGreenBrush);
-  DeleteObject(m_OrangeBrush);
+void Cgdi::DarkGreenPen() {cocos2d::ccDrawColor4B(colors[dark_green][0], colors[dark_green][1], colors[dark_green][2], colors[dark_green][3]);}
+void Cgdi::LightBluePen() {cocos2d::ccDrawColor4B(colors[light_blue][0], colors[light_blue][1], colors[light_blue][2], colors[light_blue][3]);}
+void Cgdi::LightGreyPen() {cocos2d::ccDrawColor4B(colors[light_grey][0], colors[light_grey][1], colors[light_grey][2], colors[light_grey][3]);}
+void Cgdi::LightPinkPen() {cocos2d::ccDrawColor4B(colors[light_pink][0], colors[light_pink][1], colors[light_pink][2], colors[light_pink][3]);}
 
-}
+void Cgdi::ThickBlackPen(){cocos2d::ccDrawColor4B(colors[black][0], colors[black][1], colors[black][2], colors[black][3]);}
+void Cgdi::ThickWhitePen(){cocos2d::ccDrawColor4B(colors[white][0], colors[white][1], colors[white][2], colors[white][3]);}
+void Cgdi::ThickRedPen()  {cocos2d::ccDrawColor4B(colors[red][0], colors[red][1], colors[red][2], colors[red][3]);}
+void Cgdi::ThickGreenPen(){cocos2d::ccDrawColor4B(colors[green][0], colors[green][1], colors[green][2], colors[green][3]);}
+void Cgdi::ThickBluePen() {cocos2d::ccDrawColor4B(colors[blue][0], colors[blue][1], colors[blue][2], colors[blue][3]);}
 
+void Cgdi::BlackBrush(){cocos2d::ccDrawColor4B(colors[black][0], colors[black][1], colors[black][2], colors[black][3]);}
+void Cgdi::WhiteBrush(){cocos2d::ccDrawColor4B(colors[white][0], colors[white][1], colors[white][2], colors[white][3]);} 
+void Cgdi::HollowBrush(){cocos2d::ccDrawColor4B(colors[hollow][0], colors[hollow][1], colors[hollow][2], colors[hollow][3]);}
+void Cgdi::GreenBrush(){cocos2d::ccDrawColor4B(colors[green][0], colors[green][1], colors[green][2], colors[green][3]);}
+void Cgdi::RedBrush()  {cocos2d::ccDrawColor4B(colors[red][0], colors[red][1], colors[red][2], colors[red][3]);}
+void Cgdi::BlueBrush()  {cocos2d::ccDrawColor4B(colors[blue][0], colors[blue][1], colors[blue][2], colors[blue][3]);}
+void Cgdi::GreyBrush()  {cocos2d::ccDrawColor4B(colors[grey][0], colors[grey][1], colors[grey][2], colors[grey][3]);}
+void Cgdi::BrownBrush() {cocos2d::ccDrawColor4B(colors[brown][0], colors[brown][1], colors[brown][2], colors[brown][3]);}
+void Cgdi::YellowBrush() {cocos2d::ccDrawColor4B(colors[yellow][0], colors[yellow][1], colors[yellow][2], colors[yellow][3]);}
+void Cgdi::LightBlueBrush() {cocos2d::ccDrawColor4B(colors[light_blue][0], colors[light_blue][1], colors[light_blue][2], colors[light_blue][3]);}
+void Cgdi::DarkGreenBrush() {cocos2d::ccDrawColor4B(colors[dark_green][0], colors[dark_green][1], colors[dark_green][2], colors[dark_green][3]);}
+void Cgdi::OrangeBrush() {cocos2d::ccDrawColor4B(colors[orange][0], colors[orange][1], colors[orange][2], colors[orange][3]);}

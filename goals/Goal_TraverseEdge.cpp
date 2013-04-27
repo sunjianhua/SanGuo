@@ -121,7 +121,8 @@ bool Goal_TraverseEdge::isStuck()const
 
   if (TimeTaken > m_dTimeExpected)
   {
-    debug_con << "BOT " << m_pOwner->ID() << " IS STUCK!!" << "";
+    //debug_con << "BOT " << m_pOwner->ID() << " IS STUCK!!" << "";
+	cocos2d::CCLog("BOT %i IS STUCK!!", m_pOwner->ID());
 
     return true;
   }

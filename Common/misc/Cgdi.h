@@ -13,10 +13,10 @@
 //  Author: Mat Buckland 2001 (fup@ai-junkie.com)
 //
 //------------------------------------------------------------------------
-#include <windows.h>
+//#include <windows.h>
 #include <string>
 #include <vector>
-#include <cassert>
+//#include <cassert>
 
 #include "2D/Vector2D.h"
 
@@ -24,23 +24,23 @@
 //------------------------------- define some colors
 const int NumColors = 15;
 
-const COLORREF colors[NumColors] =
+const unsigned char colors[NumColors][4] =
 {
-  RGB(255,0,0),
-  RGB(0,0,255),
-  RGB(0,255,0),
-  RGB(0,0,0),
-  RGB(255,200,200),
-  RGB(200,200,200),
-  RGB(255,255,0),
-  RGB(255,170,0),
-  RGB(255,0,170),
-  RGB(133,90,0),
-  RGB(255,255,255),  
-  RGB(0, 100, 0),        //dark green
-  RGB(0, 255, 255),       //light blue
-  RGB(200, 200, 200),     //light grey
-  RGB(255, 230, 230)      //light pink
+  {255,0,0, 255},
+  {0,0,255, 255},
+  {0,255,0, 255},
+  {0,0,0, 255},
+  {255,200,200, 255},
+  {200,200,200, 255},
+  {255,255,0, 255},
+  {255,170,0, 255},
+  {255,0,170, 255},
+  {133,90,0, 255},
+  {255,255,255, 255},  
+  {0, 100, 0, 255},        //dark green
+  {0, 255, 255, 255},       //light blue
+  {200, 200, 200, 255},     //light grey
+  {255, 230, 230,255}      //light pink
 };
 
 
@@ -78,48 +78,6 @@ public:
   
 private:
 
-  HPEN m_OldPen;
-
-  //all the pens
-  HPEN   m_BlackPen;
-  HPEN   m_WhitePen;
-  HPEN   m_RedPen;
-  HPEN   m_GreenPen;
-  HPEN   m_BluePen;
-  HPEN   m_GreyPen;
-  HPEN   m_PinkPen;
-  HPEN   m_OrangePen;
-  HPEN   m_YellowPen;
-  HPEN   m_PurplePen;
-  HPEN   m_BrownPen;
-  
-  HPEN   m_DarkGreenPen;
-  HPEN   m_LightBluePen;
-  HPEN   m_LightGreyPen;
-  HPEN   m_LightPinkPen;
-
-  HPEN   m_ThickBlackPen;
-  HPEN   m_ThickWhitePen;
-  HPEN   m_ThickRedPen;
-  HPEN   m_ThickGreenPen;
-  HPEN   m_ThickBluePen;
-  
-  HBRUSH m_OldBrush;
-
-  //all the brushes
-  HBRUSH  m_RedBrush;
-  HBRUSH  m_GreenBrush;
-  HBRUSH  m_BlueBrush;
-  HBRUSH  m_GreyBrush;
-  HBRUSH  m_BrownBrush;
-  HBRUSH  m_YellowBrush;
-  HBRUSH  m_OrangeBrush;
-
-  HBRUSH  m_LightBlueBrush;
-  HBRUSH  m_DarkGreenBrush;
-
-  HDC    m_hdc;
-
   //constructor is private
   Cgdi();
 
@@ -133,58 +91,58 @@ public:
   
   static Cgdi* Instance();
 
-  void BlackPen(){if(m_hdc){SelectObject(m_hdc, m_BlackPen);}}
-  void WhitePen(){if(m_hdc){SelectObject(m_hdc, m_WhitePen);}}
-  void RedPen()  {if(m_hdc){SelectObject(m_hdc, m_RedPen);}}
-  void GreenPen(){if(m_hdc){SelectObject(m_hdc, m_GreenPen);}}
-  void BluePen() {if(m_hdc){SelectObject(m_hdc, m_BluePen);}}
-  void GreyPen() {if(m_hdc){SelectObject(m_hdc, m_GreyPen);}}
-  void PinkPen() {if(m_hdc){SelectObject(m_hdc, m_PinkPen);}}
-  void YellowPen() {if(m_hdc){SelectObject(m_hdc, m_YellowPen);}}
-  void OrangePen() {if(m_hdc){SelectObject(m_hdc, m_OrangePen);}}
-  void PurplePen() {if(m_hdc){SelectObject(m_hdc, m_PurplePen);}}
-  void BrownPen() {if(m_hdc){SelectObject(m_hdc, m_BrownPen);}}
+  void BlackPen();
+  void WhitePen();
+  void RedPen();
+  void GreenPen();
+  void BluePen();
+  void GreyPen();
+  void PinkPen();
+  void YellowPen();
+  void OrangePen();
+  void PurplePen();
+  void BrownPen();
   
-  void DarkGreenPen() {if(m_hdc){SelectObject(m_hdc, m_DarkGreenPen);}}
-  void LightBluePen() {if(m_hdc){SelectObject(m_hdc, m_LightBluePen);}}
-  void LightGreyPen() {if(m_hdc){SelectObject(m_hdc, m_LightGreyPen);}}
-  void LightPinkPen() {if(m_hdc){SelectObject(m_hdc, m_LightPinkPen);}}
+  void DarkGreenPen();
+  void LightBluePen();
+  void LightGreyPen();
+  void LightPinkPen();
 
-  void ThickBlackPen(){if(m_hdc){SelectObject(m_hdc, m_ThickBlackPen);}}
-  void ThickWhitePen(){if(m_hdc){SelectObject(m_hdc, m_ThickWhitePen);}}
-  void ThickRedPen()  {if(m_hdc){SelectObject(m_hdc, m_ThickRedPen);}}
-  void ThickGreenPen(){if(m_hdc){SelectObject(m_hdc, m_ThickGreenPen);}}
-  void ThickBluePen() {if(m_hdc){SelectObject(m_hdc, m_ThickBluePen);}}
+  void ThickBlackPen();
+  void ThickWhitePen();
+  void ThickRedPen();
+  void ThickGreenPen();
+  void ThickBluePen();
 
-  void BlackBrush(){if(m_hdc)SelectObject(m_hdc, GetStockObject(BLACK_BRUSH));}
-  void WhiteBrush(){if(m_hdc)SelectObject(m_hdc, GetStockObject(WHITE_BRUSH));} 
-  void HollowBrush(){if(m_hdc)SelectObject(m_hdc, GetStockObject(HOLLOW_BRUSH));}
-  void GreenBrush(){if(m_hdc)SelectObject(m_hdc, m_GreenBrush);}
-  void RedBrush()  {if(m_hdc)SelectObject(m_hdc, m_RedBrush);}
-  void BlueBrush()  {if(m_hdc)SelectObject(m_hdc, m_BlueBrush);}
-  void GreyBrush()  {if(m_hdc)SelectObject(m_hdc, m_GreyBrush);}
-  void BrownBrush() {if(m_hdc)SelectObject(m_hdc, m_BrownBrush);}
-  void YellowBrush() {if(m_hdc)SelectObject(m_hdc, m_YellowBrush);}
-  void LightBlueBrush() {if(m_hdc)SelectObject(m_hdc, m_LightBlueBrush);}
-  void DarkGreenBrush() {if(m_hdc)SelectObject(m_hdc, m_DarkGreenBrush);}
-  void OrangeBrush() {if(m_hdc)SelectObject(m_hdc, m_OrangeBrush);}
+  void BlackBrush();
+  void WhiteBrush();
+  void HollowBrush();
+  void GreenBrush();
+  void RedBrush();
+  void BlueBrush();
+  void GreyBrush();
+  void BrownBrush();
+  void YellowBrush();
+  void LightBlueBrush();
+  void DarkGreenBrush();
+  void OrangeBrush();
 
 
 
   //ALWAYS call this before drawing
   void StartDrawing(HDC hdc)
   {
-    assert(m_hdc == NULL);
-    
-    m_hdc = hdc;
+    //assert(m_hdc == NULL);
+    //
+    //m_hdc = hdc;
 
-    //get the current pen
-    m_OldPen = (HPEN)SelectObject(hdc, m_BlackPen);
-    //select it back in
-    SelectObject(hdc, m_OldPen);
+    ////get the current pen
+    //m_OldPen = (HPEN)SelectObject(hdc, m_BlackPen);
+    ////select it back in
+    //SelectObject(hdc, m_OldPen);
 
-    m_OldBrush = (HBRUSH)SelectObject(hdc, GetStockObject(BLACK_BRUSH));
-    SelectObject(hdc, m_OldBrush);
+    //m_OldBrush = (HBRUSH)SelectObject(hdc, GetStockObject(BLACK_BRUSH));
+    //SelectObject(hdc, m_OldBrush);
   }
 
   
@@ -192,12 +150,12 @@ public:
   //ALWAYS call this after drawing
   void StopDrawing(HDC hdc)
   {
-    assert(hdc != NULL);
-    
-    SelectObject(hdc, m_OldPen);
-    SelectObject(hdc, m_OldBrush);
+    //assert(hdc != NULL);
+    //
+    //SelectObject(hdc, m_OldPen);
+    //SelectObject(hdc, m_OldBrush);
 
-    m_hdc = NULL;
+    //m_hdc = NULL;
  
   }
 
@@ -206,71 +164,87 @@ public:
 
   void TextAtPos(int x, int y, const std::string &s)
   {
-    TextOutA(m_hdc, x, y, s.c_str(), (int)s.size());
+    //TextOutA(m_hdc, x, y, s.c_str(), (int)s.size());
+	CCLOG("TextAtPos: %s", s.c_str());
   }
 
   void TextAtPos(double x, double y, const std::string &s)
   {
-    TextOutA(m_hdc, (int)x, (int)y, s.c_str(), (int)s.size());
+    //TextOutA(m_hdc, (int)x, (int)y, s.c_str(), (int)s.size());
+	CCLOG("TextAtPos: %s", s.c_str());
   }
 
   void TextAtPos(Vector2D pos, const std::string &s)
   {
-    TextOutA(m_hdc, (int)pos.x, (int)pos.y, s.c_str(), (int)s.size());
+    //TextOutA(m_hdc, (int)pos.x, (int)pos.y, s.c_str(), (int)s.size());
+	CCLOG("TextAtPos: %s", s.c_str());
   }
 
-  void TransparentText(){SetBkMode(m_hdc, TRANSPARENT);}
+  void TransparentText(){CCLOG("TransparentText");/*SetBkMode(m_hdc, TRANSPARENT);*/}
 
-  void OpaqueText(){SetBkMode(m_hdc, OPAQUE);}
+  void OpaqueText(){CCLOG("OpaqueText");/*SetBkMode(m_hdc, OPAQUE);*/}
 
-  void TextColor(int color){assert(color < NumColors); SetTextColor(m_hdc, colors[color]);}
-  void TextColor(int r, int g, int b){SetTextColor(m_hdc, RGB(r,g,b));}
+  void TextColor(int color){CCLOG("TextColor: %i", color);/*assert(color < NumColors); SetTextColor(m_hdc, RGB(colors[color][0],colors[color][1],colors[color][2]));*/}
+  void TextColor(int r, int g, int b){CCLOG("TextColor: R:%i, G:%i, B:%i", r, g, b);/*SetTextColor(m_hdc, RGB(r,g,b));*/}
 
 
   //----------------------------pixels
   void DrawDot(Vector2D pos, COLORREF color)
   {
-    SetPixel(m_hdc, (int)pos.x, (int)pos.y, color);
+	  //SetPixel(m_hdc, (int)pos.x, (int)pos.y, color);
+	  cocos2d::ccPointSize(10);
+	  //cocos2d::ccDrawColor4B(0,0,255,128);
+	  cocos2d::ccDrawPoint( ccp(pos.x, pos.y) );
   }
 
   void DrawDot(int x, int y, COLORREF color)
   {
-    SetPixel(m_hdc, x, y, color);
+    //SetPixel(m_hdc, x, y, color);
+	  cocos2d::ccPointSize(10);
+	  cocos2d::ccDrawPoint( ccp(x, y) );
   }
   
   //-------------------------Line Drawing
 
   void Line(Vector2D from, Vector2D to)
   {
-    MoveToEx(m_hdc, (int)from.x, (int)from.y, NULL);
-    LineTo(m_hdc, (int)to.x, (int)to.y);
+    //MoveToEx(m_hdc, (int)from.x, (int)from.y, NULL);
+    //LineTo(m_hdc, (int)to.x, (int)to.y);
+	cocos2d::ccDrawLine( ccp(from.x, from.y), ccp(to.x, to.y) );
   }
 
   void Line(int a, int b, int x, int y)
   {
-    MoveToEx(m_hdc, a, b, NULL);
-    LineTo(m_hdc, x, y);
+	  //MoveToEx(m_hdc, a, b, NULL);
+	  //LineTo(m_hdc, x, y);
+	  cocos2d::ccDrawLine( ccp(a, b), ccp(x, y) );
   }
 
   void Line(double a, double b, double x, double y)
   {
-    MoveToEx(m_hdc, (int)a, (int)b, NULL);
-    LineTo(m_hdc, (int)x, (int)y);
+	  //MoveToEx(m_hdc, (int)a, (int)b, NULL);
+	  //LineTo(m_hdc, (int)x, (int)y);
+	  cocos2d::ccDrawLine( ccp(a, b), ccp(x, y) );
   }
-
-
 
   void PolyLine(const std::vector<Vector2D>& points)
   {
-    //make sure we have at least 2 points
-    if (points.size() < 2) return;
+	  //make sure we have at least 2 points
+	  if (points.size() < 2) return;
 
-    MoveToEx(m_hdc, (int)points[0].x, (int)points[0].y, NULL);
+	  //MoveToEx(m_hdc, (int)points[0].x, (int)points[0].y, NULL);
 
-    for (unsigned int p=1; p<points.size(); ++p)
-    {
-      LineTo(m_hdc, (int)points[p].x, (int)points[p].y);
-    }
+	  //for (unsigned int p=1; p<points.size(); ++p)
+	  //{
+	  // LineTo(m_hdc, (int)points[p].x, (int)points[p].y);
+	  //}
+	  cocos2d::CCPoint *pvertices = new cocos2d::CCPoint[points.size()];
+
+	  for (unsigned int p=0; p<points.size(); ++p)
+		  pvertices[p] = ccp(points[p].x, points[p].y);
+	  cocos2d::ccDrawPoly( pvertices, points.size(), false);
+
+	  delete []pvertices;
   }
 
   void LineWithArrow(Vector2D from, Vector2D to, double size)
@@ -285,8 +259,9 @@ public:
     Vector2D ArrowPoint2 = CrossingPoint - (norm.Perp() * 0.4f * size); 
 
     //draw the line
-    MoveToEx(m_hdc, (int)from.x, (int)from.y, NULL);
-    LineTo(m_hdc, (int)CrossingPoint.x, (int)CrossingPoint.y);
+    //MoveToEx(m_hdc, (int)from.x, (int)from.y, NULL);
+    //LineTo(m_hdc, (int)CrossingPoint.x, (int)CrossingPoint.y);
+	cocos2d::ccDrawLine( ccp(from.x, from.y), ccp(CrossingPoint.x, CrossingPoint.y) );
 
     //draw the arrowhead (filled with the currently selected brush)
     POINT p[3];
@@ -295,8 +270,10 @@ public:
     p[1] = VectorToPOINT(ArrowPoint2);
     p[2] = VectorToPOINT(to);                  
                        
-    SetPolyFillMode(m_hdc, WINDING);
-    Polygon(m_hdc, p, 3);
+    //SetPolyFillMode(m_hdc, WINDING);
+    //Polygon(m_hdc, p, 3);
+	cocos2d::CCPoint vertices3[] = {ccp(p[0].x, p[0].y), ccp(p[1].x, p[1].y), ccp(p[2].x, p[2].y)};
+	cocos2d::ccDrawPoly( vertices3, 3, true);
 
   }
 
@@ -311,79 +288,98 @@ public:
 
   void Rect(int left, int top, int right, int bot)
   {
-    Rectangle(m_hdc, left, top, right, bot);
+	  //Rectangle(m_hdc, left, top, right, bot);
+
+	  cocos2d::CCPoint vertices3[] = {ccp(left,bot), ccp(left,top), ccp(right,top), ccp(right,bot)};
+	  cocos2d::ccDrawSolidPoly( vertices3, 4, cocos2d::ccc4f(1,1,0,1) );
   }
 
   void Rect(double left, double top, double right, double bot)
   {
-    Rectangle(m_hdc, (int)left, (int)top, (int)right, (int)bot);
+	  //Rectangle(m_hdc, (int)left, (int)top, (int)right, (int)bot);
+
+	  cocos2d::CCPoint vertices3[] = {ccp(left,bot), ccp(left,top), ccp(right,top), ccp(right,bot)};
+	  cocos2d::ccDrawSolidPoly( vertices3, 4, cocos2d::ccc4f(1,1,0,1) );
   }
 
 
 
   void ClosedShape(const std::vector<Vector2D> &points)
   {
-    MoveToEx(m_hdc, (int)points[0].x, (int)points[0].y, NULL);
-    
-    for (unsigned int p=1; p<points.size(); ++p)
-    {
-      LineTo(m_hdc, (int)points[p].x, (int)points[p].y);
-    }
+	  //MoveToEx(m_hdc, (int)points[0].x, (int)points[0].y, NULL);
 
-    LineTo(m_hdc, (int)points[0].x, (int)points[0].y);
+	  //for (unsigned int p=1; p<points.size(); ++p)
+	  //{
+		 // LineTo(m_hdc, (int)points[p].x, (int)points[p].y);
+	  //}
+
+	  //LineTo(m_hdc, (int)points[0].x, (int)points[0].y);
+
+	  cocos2d::CCPoint *pvertices = new cocos2d::CCPoint[points.size()];
+
+	  for (unsigned int p=0; p<points.size(); ++p)
+		  pvertices[p] = ccp(points[p].x, points[p].y);
+	  cocos2d::ccDrawPoly( pvertices, points.size(), true);
+
+	  delete []pvertices;
   }
 
 
   void Circle(Vector2D pos, double radius)
   {
-    Ellipse(m_hdc,
-           (int)(pos.x-radius),
-           (int)(pos.y-radius),
-           (int)(pos.x+radius+1),
-           (int)(pos.y+radius+1));
+    //Ellipse(m_hdc,
+    //       (int)(pos.x-radius),
+    //       (int)(pos.y-radius),
+    //       (int)(pos.x+radius+1),
+    //       (int)(pos.y+radius+1));
+
+	cocos2d::ccDrawCircle( ccp(pos.x, pos.y), radius, CC_DEGREES_TO_RADIANS(90), 50, true);
   }
 
   void Circle(double x, double y, double radius)
   {
-    Ellipse(m_hdc,
-           (int)(x-radius),
-           (int)(y-radius),
-           (int)(x+radius+1),
-           (int)(y+radius+1));
+	  //Ellipse(m_hdc,
+	  //       (int)(x-radius),
+	  //       (int)(y-radius),
+	  //       (int)(x+radius+1),
+	  //       (int)(y+radius+1));
+	  cocos2d::ccDrawCircle( ccp(x, y), radius, CC_DEGREES_TO_RADIANS(90), 50, true);
   }
 
   void Circle(int x, int y, double radius)
   {
-    Ellipse(m_hdc,
-           (int)(x-radius),
-           (int)(y-radius),
-           (int)(x+radius+1),
-           (int)(y+radius+1));
+	  //Ellipse(m_hdc,
+	  //       (int)(x-radius),
+	  //       (int)(y-radius),
+	  //       (int)(x+radius+1),
+	  //       (int)(y+radius+1));
+
+	  cocos2d::ccDrawCircle( ccp(x, y), radius, CC_DEGREES_TO_RADIANS(90), 50, true);
   }
 
 
   void SetPenColor(int color)
   {
-    assert (color < NumColors);
-    
-   switch (color)
-   {
-    case black:BlackPen(); return;
+   // assert (color < NumColors);
+   // 
+   //switch (color)
+   //{
+   // case black:BlackPen(); return;
 
-    case white:WhitePen(); return;
-    case red: RedPen(); return;
-    case green: GreenPen(); return;
-    case blue: BluePen(); return;
-    case pink: PinkPen(); return;
-    case grey: GreyPen(); return;
-    case yellow: YellowPen(); return;
-    case orange: OrangePen(); return;
-    case purple: PurplePen(); return;
-    case brown: BrownPen(); return;
-    case light_blue: LightBluePen(); return;
-    case light_grey: LightGreyPen(); return;
-    case light_pink: LightPinkPen(); return;
-    }//end switch
+   // case white:WhitePen(); return;
+   // case red: RedPen(); return;
+   // case green: GreenPen(); return;
+   // case blue: BluePen(); return;
+   // case pink: PinkPen(); return;
+   // case grey: GreyPen(); return;
+   // case yellow: YellowPen(); return;
+   // case orange: OrangePen(); return;
+   // case purple: PurplePen(); return;
+   // case brown: BrownPen(); return;
+   // case light_blue: LightBluePen(); return;
+   // case light_grey: LightGreyPen(); return;
+   // case light_pink: LightPinkPen(); return;
+   // }//end switch
   }
 };
 
