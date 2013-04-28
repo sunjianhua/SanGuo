@@ -100,7 +100,8 @@ void Goal_FollowPath::Render()
   for (it = m_Path.begin(); it != m_Path.end(); ++it)
   {  
     gdi->BlackPen();
-    gdi->LineWithArrow(it->Source(), it->Destination(), 5);
+    //gdi->LineWithArrow(it->Source(), it->Destination(), 5);
+	gdi->Line(it->Source(), it->Destination());
     
     gdi->RedBrush();
     gdi->BlackPen();

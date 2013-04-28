@@ -427,62 +427,62 @@ void Raven_Game::ExorciseAnyPossessedBot()
 //  if the cursor is not over a bot then any selected bot/s will attempt to
 //  move to that position.
 //-----------------------------------------------------------------------------
-void Raven_Game::ClickRightMouseButton(POINTS p)
-{
-  Raven_Bot* pBot = GetBotAtPosition(POINTStoVector(p));
-
-  //if there is no selected bot just return;
-  if (!pBot && m_pSelectedBot == NULL) return;
-
-  //if the cursor is over a different bot to the existing selection,
-  //change selection
-  if (pBot && pBot != m_pSelectedBot)
-  { 
-    if (m_pSelectedBot) m_pSelectedBot->Exorcise();
-    m_pSelectedBot = pBot;
-
-    return;
-  }
-
-  //if the user clicks on a selected bot twice it becomes possessed(under
-  //the player's control)
-  if (pBot && pBot == m_pSelectedBot)
-  {
-    m_pSelectedBot->TakePossession();
-
-    //clear any current goals
-    m_pSelectedBot->GetBrain()->RemoveAllSubgoals();
-  }
-
-  //if the bot is possessed then a right click moves the bot to the cursor
-  //position
-  if (m_pSelectedBot->isPossessed())
-  {
-    ////if the shift key is pressed down at the same time as clicking then the
-    ////movement command will be queued
-    //if (IS_KEY_PRESSED('Q'))
-    //{
-    //  m_pSelectedBot->GetBrain()->QueueGoal_MoveToPosition(POINTStoVector(p));
-    //}
-    //else
-    //{
-    //  //clear any current goals
-    //  m_pSelectedBot->GetBrain()->RemoveAllSubgoals();
-
-    //  m_pSelectedBot->GetBrain()->AddGoal_MoveToPosition(POINTStoVector(p));
-    //}
-  }
-}
+//void Raven_Game::ClickRightMouseButton(POINTS p)
+//{
+//  Raven_Bot* pBot = GetBotAtPosition(POINTStoVector(p));
+//
+//  //if there is no selected bot just return;
+//  if (!pBot && m_pSelectedBot == NULL) return;
+//
+//  //if the cursor is over a different bot to the existing selection,
+//  //change selection
+//  if (pBot && pBot != m_pSelectedBot)
+//  { 
+//    if (m_pSelectedBot) m_pSelectedBot->Exorcise();
+//    m_pSelectedBot = pBot;
+//
+//    return;
+//  }
+//
+//  //if the user clicks on a selected bot twice it becomes possessed(under
+//  //the player's control)
+//  if (pBot && pBot == m_pSelectedBot)
+//  {
+//    m_pSelectedBot->TakePossession();
+//
+//    //clear any current goals
+//    m_pSelectedBot->GetBrain()->RemoveAllSubgoals();
+//  }
+//
+//  //if the bot is possessed then a right click moves the bot to the cursor
+//  //position
+//  if (m_pSelectedBot->isPossessed())
+//  {
+//    ////if the shift key is pressed down at the same time as clicking then the
+//    ////movement command will be queued
+//    //if (IS_KEY_PRESSED('Q'))
+//    //{
+//    //  m_pSelectedBot->GetBrain()->QueueGoal_MoveToPosition(POINTStoVector(p));
+//    //}
+//    //else
+//    //{
+//    //  //clear any current goals
+//    //  m_pSelectedBot->GetBrain()->RemoveAllSubgoals();
+//
+//    //  m_pSelectedBot->GetBrain()->AddGoal_MoveToPosition(POINTStoVector(p));
+//    //}
+//  }
+//}
 
 //---------------------- ClickLeftMouseButton ---------------------------------
 //-----------------------------------------------------------------------------
-void Raven_Game::ClickLeftMouseButton(POINTS p)
-{
-  if (m_pSelectedBot && m_pSelectedBot->isPossessed())
-  {
-    m_pSelectedBot->FireWeapon(POINTStoVector(p));
-  }
-}
+//void Raven_Game::ClickLeftMouseButton(POINTS p)
+//{
+//  if (m_pSelectedBot && m_pSelectedBot->isPossessed())
+//  {
+//    m_pSelectedBot->FireWeapon(POINTStoVector(p));
+//  }
+//}
 
 //------------------------ GetPlayerInput -------------------------------------
 //

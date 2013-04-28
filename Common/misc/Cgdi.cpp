@@ -43,7 +43,8 @@ void Cgdi::ThickBluePen() {cocos2d::ccDrawColor4B(colors[blue][0], colors[blue][
 
 void Cgdi::BlackBrush(){cocos2d::ccDrawColor4B(colors[black][0], colors[black][1], colors[black][2], colors[black][3]);}
 void Cgdi::WhiteBrush(){cocos2d::ccDrawColor4B(colors[white][0], colors[white][1], colors[white][2], colors[white][3]);} 
-void Cgdi::HollowBrush(){cocos2d::ccDrawColor4B(colors[hollow][0], colors[hollow][1], colors[hollow][2], colors[hollow][3]);}
+//void Cgdi::HollowBrush(){cocos2d::ccDrawColor4B(colors[hollow][0], colors[hollow][1], colors[hollow][2], colors[hollow][3]);}
+void Cgdi::HollowBrush(){cocos2d::ccDrawColor4B(colors[green][0], colors[green][1], colors[green][2], colors[green][3]);}
 void Cgdi::GreenBrush(){cocos2d::ccDrawColor4B(colors[green][0], colors[green][1], colors[green][2], colors[green][3]);}
 void Cgdi::RedBrush()  {cocos2d::ccDrawColor4B(colors[red][0], colors[red][1], colors[red][2], colors[red][3]);}
 void Cgdi::BlueBrush()  {cocos2d::ccDrawColor4B(colors[blue][0], colors[blue][1], colors[blue][2], colors[blue][3]);}

@@ -134,15 +134,15 @@ public:
 
   void        TogglePause(){m_bPaused = !m_bPaused;}
   
-  //this method is called when the user clicks the right mouse button.
-  //The method checks to see if a bot is beneath the cursor. If so, the bot
-  //is recorded as selected.If the cursor is not over a bot then any selected
-  // bot/s will attempt to move to that position.
-  void        ClickRightMouseButton(POINTS p);
+  ////this method is called when the user clicks the right mouse button.
+  ////The method checks to see if a bot is beneath the cursor. If so, the bot
+  ////is recorded as selected.If the cursor is not over a bot then any selected
+  //// bot/s will attempt to move to that position.
+  //void        ClickRightMouseButton(POINTS p);
 
-  //this method is called when the user clicks the left mouse button. If there
-  //is a possessed bot, this fires the weapon, else does nothing
-  void        ClickLeftMouseButton(POINTS p);
+  ////this method is called when the user clicks the left mouse button. If there
+  ////is a possessed bot, this fires the weapon, else does nothing
+  //void        ClickLeftMouseButton(POINTS p);
 
   //when called will release any possessed bot from user control
   void        ExorciseAnyPossessedBot();

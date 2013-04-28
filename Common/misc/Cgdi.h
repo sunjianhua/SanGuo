@@ -247,35 +247,35 @@ public:
 	  delete []pvertices;
   }
 
-  void LineWithArrow(Vector2D from, Vector2D to, double size)
-  {
-    Vector2D norm = Vec2DNormalize(to-from);
+ // void LineWithArrow(Vector2D from, Vector2D to, double size)
+ // {
+ //   Vector2D norm = Vec2DNormalize(to-from);
 
-    //calculate where the arrow is attached
-    Vector2D CrossingPoint = to - (norm * size);
-    
-    //calculate the two extra points required to make the arrowhead
-    Vector2D ArrowPoint1 = CrossingPoint + (norm.Perp() * 0.4f * size); 
-    Vector2D ArrowPoint2 = CrossingPoint - (norm.Perp() * 0.4f * size); 
+ //   //calculate where the arrow is attached
+ //   Vector2D CrossingPoint = to - (norm * size);
+ //   
+ //   //calculate the two extra points required to make the arrowhead
+ //   Vector2D ArrowPoint1 = CrossingPoint + (norm.Perp() * 0.4f * size); 
+ //   Vector2D ArrowPoint2 = CrossingPoint - (norm.Perp() * 0.4f * size); 
 
-    //draw the line
-    //MoveToEx(m_hdc, (int)from.x, (int)from.y, NULL);
-    //LineTo(m_hdc, (int)CrossingPoint.x, (int)CrossingPoint.y);
-	cocos2d::ccDrawLine( ccp(from.x, from.y), ccp(CrossingPoint.x, CrossingPoint.y) );
+ //   //draw the line
+ //   //MoveToEx(m_hdc, (int)from.x, (int)from.y, NULL);
+ //   //LineTo(m_hdc, (int)CrossingPoint.x, (int)CrossingPoint.y);
+	//cocos2d::ccDrawLine( ccp(from.x, from.y), ccp(CrossingPoint.x, CrossingPoint.y) );
 
-    //draw the arrowhead (filled with the currently selected brush)
-    POINT p[3];
-    
-    p[0] = VectorToPOINT(ArrowPoint1);
-    p[1] = VectorToPOINT(ArrowPoint2);
-    p[2] = VectorToPOINT(to);                  
-                       
-    //SetPolyFillMode(m_hdc, WINDING);
-    //Polygon(m_hdc, p, 3);
-	cocos2d::CCPoint vertices3[] = {ccp(p[0].x, p[0].y), ccp(p[1].x, p[1].y), ccp(p[2].x, p[2].y)};
-	cocos2d::ccDrawPoly( vertices3, 3, true);
+ //   //draw the arrowhead (filled with the currently selected brush)
+ //   POINT p[3];
+ //   
+ //   p[0] = VectorToPOINT(ArrowPoint1);
+ //   p[1] = VectorToPOINT(ArrowPoint2);
+ //   p[2] = VectorToPOINT(to);                  
+ //                      
+ //   //SetPolyFillMode(m_hdc, WINDING);
+ //   //Polygon(m_hdc, p, 3);
+	//cocos2d::CCPoint vertices3[] = {ccp(p[0].x, p[0].y), ccp(p[1].x, p[1].y), ccp(p[2].x, p[2].y)};
+	//cocos2d::ccDrawPoly( vertices3, 3, true);
 
-  }
+ // }
 
   void Cross(Vector2D pos, int diameter)
   {

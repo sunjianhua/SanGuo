@@ -387,35 +387,36 @@ Vector2D Raven_Map::GetRandomNodeLocation()const
 //-----------------------------------------------------------------------------
 void Raven_Map::Render()
 {
-  //render the navgraph
-  if (UserOptions->m_bShowGraph)
-  {
-    GraphHelper_DrawUsingGDI<NavGraph>(*m_pNavGraph, Cgdi::grey, UserOptions->m_bShowNodeIndices);
-  }
+	//render the navgraph
+	if (UserOptions->m_bShowGraph)
+	{
+		GraphHelper_DrawUsingGDI<NavGraph>(*m_pNavGraph, Cgdi::grey, UserOptions->m_bShowNodeIndices);
+	}
 
-  //render any doors
-  std::vector<Raven_Door*>::iterator curDoor = m_Doors.begin();
-  for (curDoor; curDoor != m_Doors.end(); ++curDoor)
-  {
-    (*curDoor)->Render();
-  }
+	//render any doors
+	std::vector<Raven_Door*>::iterator curDoor = m_Doors.begin();
+	for (curDoor; curDoor != m_Doors.end(); ++curDoor)
+	{
+		(*curDoor)->Render();
+	}
 
-  //render all the triggers
-  m_TriggerSystem.Render();
+	//render all the triggers
+	m_TriggerSystem.Render();
 
-  //render all the walls
-  std::vector<Wall2D*>::const_iterator curWall = m_Walls.begin();
-  for (curWall; curWall != m_Walls.end(); ++curWall)
-  {
-    gdi->ThickBlackPen();
-    (*curWall)->Render();
-  }
+	//render all the walls
+	std::vector<Wall2D*>::const_iterator curWall = m_Walls.begin();
+	for (curWall; curWall != m_Walls.end(); ++curWall)
+	{
+		//gdi->ThickBlackPen();
+		gdi->ThickRedPen();
+		(*curWall)->Render();
+	}
 
-  std::vector<Vector2D>::const_iterator curSp = m_SpawnPoints.begin();
-  for (curSp; curSp != m_SpawnPoints.end(); ++curSp)
-  {
-    gdi->GreyBrush();
-    gdi->GreyPen();
-    gdi->Circle(*curSp, 7);
-  }
+	std::vector<Vector2D>::const_iterator curSp = m_SpawnPoints.begin();
+	for (curSp; curSp != m_SpawnPoints.end(); ++curSp)
+	{
+		gdi->GreyBrush();
+		gdi->GreyPen();
+		gdi->Circle(*curSp, 7);
+	}
 }
