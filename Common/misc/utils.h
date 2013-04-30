@@ -17,6 +17,7 @@
 #include <cassert>
 #include <iomanip>
 
+#include "platform/platform.h"
 
 
 //a few useful constants
@@ -294,7 +295,13 @@ inline double StandardDeviation(const std::vector<double>& v)
 //}
 
 
-
+// 
+inline long millisecondNow()  
+{
+	struct cocos2d::cc_timeval now; 
+	cocos2d::CCTime::gettimeofdayCocos2d(&now, NULL); 
+	return (now.tv_sec * 1000 + now.tv_usec / 1000); 
+}
 
 
 #endif

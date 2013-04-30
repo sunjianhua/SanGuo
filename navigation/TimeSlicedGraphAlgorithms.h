@@ -119,7 +119,7 @@ public:
 
   Graph_SearchAStar_TS(const graph_type& G,
                       int                source,
-                       int                target):Graph_SearchTimeSliced<Edge>(this->AStar),
+                       int                target):Graph_SearchTimeSliced<Edge>(Graph_SearchTimeSliced<Edge>::AStar),
   
                                               m_Graph(G),
                                               m_ShortestPathTree(G.NumNodes()),                              
@@ -312,7 +312,7 @@ public:
 
   Graph_SearchDijkstras_TS(const graph_type&  G,
                           int                   source,
-                           int                   target):Graph_SearchTimeSliced<Edge>(this->Dijkstra),
+                           int                   target):Graph_SearchTimeSliced<Edge>(Graph_SearchTimeSliced<Edge>::Dijkstra),
   
                                               m_Graph(G),
                                               m_ShortestPathTree(G.NumNodes()),                              
