@@ -54,7 +54,7 @@ template <class entity_type>
 void  Trigger_OnButtonSendMsg<entity_type>::Try(entity_type* pEnt)
 {
 
-  if (isTouchingTrigger(pEnt->Pos(), pEnt->BRadius()))
+  if (this->isTouchingTrigger(pEnt->Pos(), pEnt->BRadius()))
   {
       Dispatcher->DispatchMsg(SEND_MSG_IMMEDIATELY,
                               this->ID(),
@@ -75,12 +75,12 @@ void Trigger_OnButtonSendMsg<entity_type>::Render()
 {
  gdi->OrangePen();
 
-  double sz = BRadius();  
+  double sz = this->BRadius();  
 
-  gdi->Line(Pos().x - sz, Pos().y - sz, Pos().x + sz, Pos().y - sz);
-  gdi->Line(Pos().x + sz, Pos().y - sz, Pos().x + sz, Pos().y + sz);
-  gdi->Line(Pos().x + sz, Pos().y + sz, Pos().x - sz, Pos().y + sz);
-  gdi->Line(Pos().x - sz, Pos().y + sz, Pos().x - sz, Pos().y - sz);
+  gdi->Line(this->Pos().x - sz, this->Pos().y - sz, this->Pos().x + sz, this->Pos().y - sz);
+  gdi->Line(this->Pos().x + sz, this->Pos().y - sz, this->Pos().x + sz, this->Pos().y + sz);
+  gdi->Line(this->Pos().x + sz, this->Pos().y + sz, this->Pos().x - sz, this->Pos().y + sz);
+  gdi->Line(this->Pos().x - sz, this->Pos().y + sz, this->Pos().x - sz, this->Pos().y - sz);
 }
 
 template <class entity_type>
@@ -96,12 +96,12 @@ void Trigger_OnButtonSendMsg<entity_type>::Read(std::ifstream& is)
   double x,y,r;
   is >> x >> y >> r;
 
-  SetPos(Vector2D(x,y));
-  SetBRadius(r);
+  this->SetPos(Vector2D(x,y));
+  this->SetBRadius(r);
 
   //create and set this trigger's region of fluence
-  AddRectangularTriggerRegion(Pos()-Vector2D(BRadius(), BRadius()),   //top left corner
-                              Pos()+Vector2D(BRadius(), BRadius()));  //bottom right corner
+  this->AddRectangularTriggerRegion(this->Pos()-Vector2D(this->BRadius(), this->BRadius()),   //top left corner
+                              this->Pos()+Vector2D(this->BRadius(), this->BRadius()));  //bottom right corner
 }
 
 template <class entity_type>

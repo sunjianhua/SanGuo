@@ -142,7 +142,7 @@ bool Graph_SearchDFS<graph_type>::Search()
     //push the edges leading from the node this edge points to onto
     //the stack (provided the edge does not point to a previously 
     //visited node)
-    graph_type::ConstEdgeIterator ConstEdgeItr(m_Graph, Next->To());
+    typename graph_type::ConstEdgeIterator ConstEdgeItr(m_Graph, Next->To());
 
     for (const Edge* pE=ConstEdgeItr.begin();
         !ConstEdgeItr.end();
@@ -297,7 +297,7 @@ bool Graph_SearchBFS<graph_type>::Search()
 
     //push the edges leading from the node at the end of this edge 
     //onto the queue
-    graph_type::ConstEdgeIterator ConstEdgeItr(m_Graph, Next->To());
+    typename graph_type::ConstEdgeIterator ConstEdgeItr(m_Graph, Next->To());
 
     for (const Edge* pE=ConstEdgeItr.begin();
         !ConstEdgeItr.end();
@@ -453,7 +453,7 @@ void Graph_SearchDijkstra<graph_type>::Search()
     if (NextClosestNode == m_iTarget) return;
 
     //now to relax the edges.
-    graph_type::ConstEdgeIterator ConstEdgeItr(m_Graph, NextClosestNode);
+    typename graph_type::ConstEdgeIterator ConstEdgeItr(m_Graph, NextClosestNode);
 
     //for each edge connected to the next closest node
     for (const Edge* pE=ConstEdgeItr.begin();
@@ -605,7 +605,7 @@ void Graph_SearchAStar<graph_type, heuristic>::Search()
     if (NextClosestNode == m_iTarget) return;
 
     //now to test all the edges attached to this node
-    graph_type::ConstEdgeIterator ConstEdgeItr(m_Graph, NextClosestNode);
+    typename graph_type::ConstEdgeIterator ConstEdgeItr(m_Graph, NextClosestNode);
 
     for (const Edge* pE=ConstEdgeItr.begin();
         !ConstEdgeItr.end(); 
@@ -711,7 +711,7 @@ private:
       m_SpanningTree[best] = m_Fringe[best];
 
       //now to test the edges attached to this node
-      graph_type::ConstEdgeIterator ConstEdgeItr(m_Graph, best);
+      typename graph_type::ConstEdgeIterator ConstEdgeItr(m_Graph, best);
 
       for (const Edge* pE=ConstEdgeItr.beg(); !ConstEdgeItr.end(); pE=ConstEdgeItr.nxt())
       {

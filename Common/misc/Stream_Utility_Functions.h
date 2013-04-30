@@ -48,11 +48,11 @@ inline T GetValueFromStream(std::ifstream& stream)
 
   stream >> val;
 
-  //make sure it was the correct type
-  if (!stream)
-  {
-    throw std::runtime_error("Attempting to retrieve wrong type from stream");
-  }
+//  //make sure it was the correct type
+//  if (!stream)
+//  {
+//    throw std::runtime_error("Attempting to retrieve wrong type from stream");
+//  }
 
   return val;
 }

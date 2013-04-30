@@ -448,7 +448,7 @@ inline bool TwoCirclesIntersectionPoints(double x1, double y1, double r1,
   //Now calculate the distance from the center of each circle to the center
   //of the line which connects the intersection points.
   double a = (r1 - r2 + (d * d)) / (2 * d);
-  double b = (r2 - r1 + (d * d)) / (2 * d);
+//  double b = (r2 - r1 + (d * d)) / (2 * d);
   
 
   //MAYBE A TEST FOR EXACT OVERLAP? 
@@ -585,10 +585,12 @@ inline bool GetLineSegmentCircleClosestIntersectionPoint(Vector2D A,
                                                          Vector2D& IntersectionPoint)
 {
   Vector2D toBNorm = Vec2DNormalize(B-A);
+    Vector2D perp = toBNorm.Perp();
 
   //move the circle into the local space defined by the vector B-A with origin
   //at A
-  Vector2D LocalPos = PointToLocalSpace(pos, toBNorm, toBNorm.Perp(), A);
+//  Vector2D LocalPos = PointToLocalSpace(pos, toBNorm, toBNorm.Perp(), A);
+  Vector2D LocalPos = PointToLocalSpace(pos, toBNorm, perp, A);
 
   bool ipFound = false;
 

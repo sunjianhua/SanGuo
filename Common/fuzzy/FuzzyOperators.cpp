@@ -15,10 +15,10 @@ FzAND::FzAND(const FzAND& fa)
 }
    
   //ctor using two terms
-FzAND::FzAND(FuzzyTerm& op1, FuzzyTerm& op2)
+FzAND::FzAND(FuzzyTerm* op1, FuzzyTerm* op2)
 {
-   m_Terms.push_back(op1.Clone());
-   m_Terms.push_back(op2.Clone());
+   m_Terms.push_back(op1->Clone());
+   m_Terms.push_back(op2->Clone());
 }
 
 //ctor using three terms

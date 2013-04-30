@@ -78,18 +78,25 @@ void Blaster::InitializeFuzzyModule()
 {
   FuzzyVariable& DistToTarget = m_FuzzyModule.CreateFLV("DistToTarget");
 
-  FzSet& Target_Close = DistToTarget.AddLeftShoulderSet("Target_Close",0,25,150);
-  FzSet& Target_Medium = DistToTarget.AddTriangularSet("Target_Medium",25,150,300);
-  FzSet& Target_Far = DistToTarget.AddRightShoulderSet("Target_Far",150,300,1000);
+//  FzSet& Target_Close = DistToTarget.AddLeftShoulderSet("Target_Close",0,25,150);
+//  FzSet& Target_Medium = DistToTarget.AddTriangularSet("Target_Medium",25,150,300);
+//  FzSet& Target_Far = DistToTarget.AddRightShoulderSet("Target_Far",150,300,1000);
+    FzSet Target_Close = DistToTarget.AddLeftShoulderSet("Target_Close",0,25,150);
+    FzSet Target_Medium = DistToTarget.AddTriangularSet("Target_Medium",25,150,300);
+    FzSet Target_Far = DistToTarget.AddRightShoulderSet("Target_Far",150,300,1000);
 
   FuzzyVariable& Desirability = m_FuzzyModule.CreateFLV("Desirability"); 
-  FzSet& VeryDesirable = Desirability.AddRightShoulderSet("VeryDesirable", 50, 75, 100);
-  FzSet& Desirable = Desirability.AddTriangularSet("Desirable", 25, 50, 75);
-  FzSet& Undesirable = Desirability.AddLeftShoulderSet("Undesirable", 0, 25, 50);
+//  FzSet& VeryDesirable = Desirability.AddRightShoulderSet("VeryDesirable", 50, 75, 100);
+//  FzSet& Desirable = Desirability.AddTriangularSet("Desirable", 25, 50, 75);
+//  FzSet& Undesirable = Desirability.AddLeftShoulderSet("Undesirable", 0, 25, 50);
+    FzSet VeryDesirable = Desirability.AddRightShoulderSet("VeryDesirable", 50, 75, 100);
+    FzSet Desirable = Desirability.AddTriangularSet("Desirable", 25, 50, 75);
+    FzSet Undesirable = Desirability.AddLeftShoulderSet("Undesirable", 0, 25, 50);
 
-  m_FuzzyModule.AddRule(Target_Close, Desirable);
-  m_FuzzyModule.AddRule(Target_Medium, FzVery(Undesirable));
-  m_FuzzyModule.AddRule(Target_Far, FzVery(Undesirable));
+  m_FuzzyModule.AddRule(&Target_Close, &Desirable);
+    FzVery fzUndesirable = FzVery(&Undesirable);
+  m_FuzzyModule.AddRule(&Target_Medium, &fzUndesirable);
+  m_FuzzyModule.AddRule(&Target_Far, &fzUndesirable);
 }
 
 

@@ -12,6 +12,7 @@ extern "C"
 }
 
 #include <string>
+#include <stdexcept>
 #include "misc/utils.h"
 #include "misc/Stream_Utility_Functions.h"
 

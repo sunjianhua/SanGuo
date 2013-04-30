@@ -12,7 +12,7 @@
 struct Telegram;
 #include "misc/cgdi.h"
 #include "misc/TypeToString.h"
-
+#include <stdexcept>
 
 
 template <class entity_type>

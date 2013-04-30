@@ -12,6 +12,7 @@
 //-----------------------------------------------------------------------------
 #include <list>
 #include <cassert>
+#include "TimeSlicedGraphAlgorithms.h"
 
 
 
@@ -65,7 +66,7 @@ inline void PathManager<path_planner>::UpdateSearches()
 
   //iterate through the search requests until either all requests have been
   //fulfilled or there are no search cycles remaining for this update-step.
-  std::list<path_planner*>::iterator curPath = m_SearchRequests.begin();
+  typename std::list<path_planner*>::iterator curPath = m_SearchRequests.begin();
   while (NumCyclesRemaining-- && !m_SearchRequests.empty())
   {
     //make one search cycle of this path request

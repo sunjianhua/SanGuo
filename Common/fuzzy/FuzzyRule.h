@@ -35,9 +35,9 @@ private:
 
 public:
 
-  FuzzyRule(const FuzzyTerm& ant,
-            const FuzzyTerm& con):m_pAntecedent(ant.Clone()),
-                                  m_pConsequence(con.Clone())
+  FuzzyRule(const FuzzyTerm* ant,
+            const FuzzyTerm* con):m_pAntecedent(ant->Clone()),
+                                  m_pConsequence(con->Clone())
   {}
 
   ~FuzzyRule(){delete m_pAntecedent; delete m_pConsequence;}

@@ -192,7 +192,7 @@ bool Raven_Map::LoadMap(const std::string& filename)
 
 #ifdef LOG_CREATIONAL_STUFF
     //debug_con << "NavGraph for " << filename << " loaded okay" << "";
-	cocos2d::CCLog("NavGraph for %s loaded okay", filename);
+	cocos2d::CCLog("NavGraph for %s loaded okay", filename.c_str());
 #endif
 
   //determine the average distance between graph nodes so that we can
@@ -226,7 +226,7 @@ bool Raven_Map::LoadMap(const std::string& filename)
   //the map
   char* g_szApplicationName = "Raven";
   char*	g_szWindowClassName = "MyWindowClass";
-  HWND hwnd = FindWindowA(g_szWindowClassName, g_szApplicationName);
+//  HWND hwnd = FindWindowA(g_szWindowClassName, g_szApplicationName);
   const int ExtraHeightRqdToDisplayInfo = 50;
   //ResizeWindow(hwnd, m_iSizeX, m_iSizeY+ExtraHeightRqdToDisplayInfo);
 
@@ -295,7 +295,7 @@ bool Raven_Map::LoadMap(const std::string& filename)
 
 #ifdef LOG_CREATIONAL_STUFF
     //debug_con << filename << " loaded okay" << "";
-	cocos2d::CCLog("%s loaded okay", filename);
+	cocos2d::CCLog("%s loaded okay", filename.c_str());
 #endif
 
    //calculate the cost lookup table

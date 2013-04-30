@@ -127,7 +127,7 @@ FzSet FuzzyVariable::AddTriangularSet(std::string name,
   //adjust range if necessary
   AdjustRangeToFit(minBound, maxBound);
 
-  return FzSet(*m_MemberSets[name]);
+  return FzSet(m_MemberSets[name]);
 }
 
 //--------------------------- AddLeftShoulder ---------------------------------
@@ -144,7 +144,7 @@ FzSet FuzzyVariable::AddLeftShoulderSet(std::string name,
   //adjust range if necessary
   AdjustRangeToFit(minBound, maxBound);
 
-  return FzSet(*m_MemberSets[name]);
+  return FzSet(m_MemberSets[name]);
 }
 
 
@@ -162,7 +162,7 @@ FzSet FuzzyVariable::AddRightShoulderSet(std::string name,
   //adjust range if necessary
   AdjustRangeToFit(minBound, maxBound);
 
-  return FzSet(*m_MemberSets[name]);
+  return FzSet(m_MemberSets[name]);
 }
 
 
@@ -181,7 +181,7 @@ FzSet FuzzyVariable::AddSingletonSet(std::string name,
 
   AdjustRangeToFit(minBound, maxBound);
 
-  return FzSet(*m_MemberSets[name]);
+  return FzSet(m_MemberSets[name]);
 }
 
 //---------------------------- AdjustRangeToFit -------------------------------

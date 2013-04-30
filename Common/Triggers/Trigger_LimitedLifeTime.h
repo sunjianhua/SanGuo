@@ -38,7 +38,7 @@ public:
     //the game
     if (--m_iLifetime <= 0)
     {
-      SetToBeRemovedFromGame();
+      this->SetToBeRemovedFromGame();
     }
   }
 

@@ -130,8 +130,8 @@ public:
 
 
   //ALWAYS call this before drawing
-  void StartDrawing(HDC hdc)
-  {
+//  void StartDrawing(HDC hdc)
+//  {
     //assert(m_hdc == NULL);
     //
     //m_hdc = hdc;
@@ -143,13 +143,13 @@ public:
 
     //m_OldBrush = (HBRUSH)SelectObject(hdc, GetStockObject(BLACK_BRUSH));
     //SelectObject(hdc, m_OldBrush);
-  }
+//  }
 
   
   
   //ALWAYS call this after drawing
-  void StopDrawing(HDC hdc)
-  {
+//  void StopDrawing(HDC hdc)
+//  {
     //assert(hdc != NULL);
     //
     //SelectObject(hdc, m_OldPen);
@@ -157,7 +157,7 @@ public:
 
     //m_hdc = NULL;
  
-  }
+//  }
 
 
   //---------------------------Text
@@ -188,21 +188,21 @@ public:
   void TextColor(int r, int g, int b){CCLOG("TextColor: R:%i, G:%i, B:%i", r, g, b);/*SetTextColor(m_hdc, RGB(r,g,b));*/}
 
 
-  //----------------------------pixels
-  void DrawDot(Vector2D pos, COLORREF color)
-  {
-	  //SetPixel(m_hdc, (int)pos.x, (int)pos.y, color);
-	  cocos2d::ccPointSize(10);
-	  //cocos2d::ccDrawColor4B(0,0,255,128);
-	  cocos2d::ccDrawPoint( ccp(pos.x, pos.y) );
-  }
-
-  void DrawDot(int x, int y, COLORREF color)
-  {
-    //SetPixel(m_hdc, x, y, color);
-	  cocos2d::ccPointSize(10);
-	  cocos2d::ccDrawPoint( ccp(x, y) );
-  }
+//  //----------------------------pixels
+//  void DrawDot(Vector2D pos, COLORREF color)
+//  {
+//	  //SetPixel(m_hdc, (int)pos.x, (int)pos.y, color);
+//	  cocos2d::ccPointSize(10);
+//	  //cocos2d::ccDrawColor4B(0,0,255,128);
+//	  cocos2d::ccDrawPoint( ccp(pos.x, pos.y) );
+//  }
+//
+//  void DrawDot(int x, int y, COLORREF color)
+//  {
+//    //SetPixel(m_hdc, x, y, color);
+//	  cocos2d::ccPointSize(10);
+//	  cocos2d::ccDrawPoint( ccp(x, y) );
+//  }
   
   //-------------------------Line Drawing
 

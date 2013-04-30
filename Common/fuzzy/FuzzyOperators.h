@@ -37,7 +37,7 @@ public:
   FzAND(const FzAND& fa);
    
   //ctors accepting fuzzy terms.
-  FzAND(FuzzyTerm& op1, FuzzyTerm& op2);
+  FzAND(FuzzyTerm* op1, FuzzyTerm* op2);
   FzAND(FuzzyTerm& op1, FuzzyTerm& op2, FuzzyTerm& op3);
   FzAND(FuzzyTerm& op1, FuzzyTerm& op2, FuzzyTerm& op3, FuzzyTerm& op4);
 
