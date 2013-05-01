@@ -78,7 +78,7 @@ public:
 
     if (CurrentTime >= m_dwNextUpdateTime)
     {
-      m_dwNextUpdateTime = (DWORD)(CurrentTime + m_dUpdatePeriod + RandInRange(-UpdatePeriodVariator, UpdatePeriodVariator));
+      m_dwNextUpdateTime = (unsigned long)(CurrentTime + m_dUpdatePeriod + RandInRange(-UpdatePeriodVariator, UpdatePeriodVariator));
 
       return true;
     }

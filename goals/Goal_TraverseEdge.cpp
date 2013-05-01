@@ -9,10 +9,6 @@
 #include "../lua/Raven_Scriptor.h"
 
 
-#include "debug/DebugConsole.h"
-
-
-
 //---------------------------- ctor -------------------------------------------
 //-----------------------------------------------------------------------------
 Goal_TraverseEdge::Goal_TraverseEdge(Raven_Bot* pBot,

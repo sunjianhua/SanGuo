@@ -19,8 +19,6 @@
 #include "goals/Raven_Goal_Types.h"
 #include "goals/Goal_Think.h"
 
-
-#include "Debug/DebugConsole.h"
 #include "misc/Stream_Utility_Functions.h"
 
 //-------------------------- ctor ---------------------------------------------

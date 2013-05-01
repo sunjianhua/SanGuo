@@ -14,8 +14,6 @@
 #include "Messaging/MessageDispatcher.h"
 #include "graph/NodeTypeEnumerations.h"
 
-
-#include "Debug/DebugConsole.h"
 //#define SHOW_NAVINFO
 #include <cassert>
 

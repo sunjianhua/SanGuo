@@ -7,9 +7,6 @@
 #include "misc/Stream_Utility_Functions.h"
 #include "Raven_Feature.h"
 
-
-#include "debug/DebugConsole.h"
-
 //------------------ CalculateDesirability ------------------------------------
 //
 //  returns a value between 0 and 1 that indicates the Rating of a bot (the

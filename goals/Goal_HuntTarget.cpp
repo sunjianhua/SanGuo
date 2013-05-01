@@ -5,8 +5,6 @@
 #include "../Raven_SteeringBehaviors.h"
 
 
-
-#include "debug/DebugConsole.h"
 #include "misc/cgdi.h"
 
 //---------------------------- Initialize -------------------------------------
